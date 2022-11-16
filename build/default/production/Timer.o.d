@@ -1,7 +1,10 @@
-build/default/production/Timer.o: Timer.c IOs.h Timer.h TimeDelay.h
+build/default/production/Timer.o: Timer.c UART2.h Timer.h TimeDelay.h \
+ IOs.h
 
-IOs.h:
+UART2.h:
 
 Timer.h:
 
 TimeDelay.h:
+
+IOs.h:

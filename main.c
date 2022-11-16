@@ -64,13 +64,14 @@
 #include "IOs.h"
 #include "ChangeClock.h"
 #include "UART2.h"
-
+#include "TimeDelay.h"
 int main(void){
     AD1PCFG = 0xFFFF; // Turn all analog pins to digital
     NewClk(8); //Sets clock to 8Mhz
     IOinit(); //Initialize IO 
             //  and UART
     InitUART2();
+    T2init();
 
     //Wait for button press.....
     while(1){IOcheck();}

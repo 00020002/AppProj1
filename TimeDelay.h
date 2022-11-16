@@ -7,7 +7,7 @@
 #ifndef TIMEDELAY_H
 #define	TIMEDELAY_H
 
-
+void T2init();
 void delay_ms(uint16_t time_ms);
 
 

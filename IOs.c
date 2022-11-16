@@ -50,8 +50,8 @@ void IOinit() {
 }
 
 /* -Determines what combination of buttons are pressed and performs required actions.
-    -Called whenever a CN interrupt (button press/release) occurs 
- *  -flag variable used to make sure message is printed to terminal only once per button press/release
+    -Function will be repeatedly called from main
+ *  
  */
 void IOcheck() {
 
@@ -60,14 +60,14 @@ void IOcheck() {
     delay_ms(400); // 400 msec delay to filter out debounces 
     IEC1bits.CNIE = 1; //Enable CN interrupts to detect pb release
     
-    LATBbits.LATB8 = 0;
+    LATBbits.LATB8 = 0; //Turns LED off
     
     
 
     if (b1_flag == 1) {
-        ///While button 1 pressed
-        // Light on/off with .5 sec delay
-        // "PB1 Pressed" sent to terminal
+        ///While button 1 pressed:
+        // -increment timer minutes
+        // -update time on terminal
         while (PORTAbits.RA2 == 0) {
             increment_mins();
             disp_time();
@@ -145,10 +145,10 @@ void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {
         b1_flag = 0;
         b2_flag = 0;
         b3_flag = 1;
-
-
-        if (t_running_flag == 1) t_running_flag = 0;
-
+        if(t_running_flag == 1) t_running_flag = 0;
+    
+    
+        
     } else {
         b1_flag = 0;
         b2_flag = 0;

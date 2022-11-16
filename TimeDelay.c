@@ -14,7 +14,9 @@
  * -Uses a 1:256 Clock Prescaler and assumes 8Mhz internal clock is being used
  * 
  */
-void delay_ms(uint16_t time_ms){
+
+
+void T2init(){
     T2CONbits.T32 = 0; //Timer2 and Timer3 act as separate timers
     T2CONbits.TCS = 0; //Clock source is internal clock
     T2CONbits.TCKPS = 0b11; //Input Clock Prescaler = 1:256
@@ -23,6 +25,10 @@ void delay_ms(uint16_t time_ms){
     IPC1bits.T2IP = 7; //interrupt priority = 7(highest) 
     IEC0bits.T2IE = 1;//Enables Timer2 interrupts
     IFS0bits.T2IF = 0; //clear interrupt flag
+    
+}
+void delay_ms(uint16_t time_ms){
+    
     
     int divisor = 1000 / 64;
     int cycles = (time_ms) * divisor;

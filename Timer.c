@@ -4,22 +4,20 @@
  *
  * Created on November 16 , 2022
  */
-#include "IOs.h"
+#include "UART2.h"
 #include "xc.h"
 #include "Timer.h"
-#include "TimeDelay.h""
-
+#include "TimeDelay.h"
+#include "IOs.h"
 int mins = 0;
 int secs = 0;
 int t_running_flag = 0;
 
 void decrement_mins() {
-
     mins--;
     if (mins < 0) {
         mins = 0;
     }
-
 }
 
 void decrement_secs() {
@@ -64,6 +62,10 @@ void ss_timer() {
         LATBbits.LATB8 = 0;
     }
     t_running_flag = 0;
+    if(b3_pressed >= 3){
+        reset_timer();
+        disp_time();
+    }
     
     if (mins == 0 && secs == 0)
     {

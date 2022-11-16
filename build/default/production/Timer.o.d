@@ -1,4 +1,6 @@
-build/default/production/Timer.o: Timer.c Timer.h TimeDelay.h
+build/default/production/Timer.o: Timer.c IOs.h Timer.h TimeDelay.h
+
+IOs.h:
 
 Timer.h:
 

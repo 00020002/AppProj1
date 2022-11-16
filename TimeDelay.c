@@ -1,8 +1,8 @@
-/* Name: ENCM 511 Driver Project 4
- * File:   main.c
+/* Name: ENCM 511 App Project 1 
+ * File:   TimeDelay.c
  * Author: Nicola Primomo & Kun Lu
  *
- * Created on October 25 , 2022
+ * Created on November 16 , 2022
  */
 
 
@@ -20,7 +20,7 @@ void delay_ms(uint16_t time_ms){
     T2CONbits.TCKPS = 0b11; //Input Clock Prescaler = 1:256
     T2CONbits.TSIDL = 0; //Timer2 continues in idle
     
-    IPC1bits.T2IP = 5; //interrupt priority = 7(highest) 
+    IPC1bits.T2IP = 7; //interrupt priority = 7(highest) 
     IEC0bits.T2IE = 1;//Enables Timer2 interrupts
     IFS0bits.T2IF = 0; //clear interrupt flag
     

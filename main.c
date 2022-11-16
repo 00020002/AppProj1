@@ -1,8 +1,8 @@
-/* Name: ENCM 511 Driver Project 4
+/* Name: ENCM 511 App Project 1 
  * File:   main.c
  * Author: Nicola Primomo & Kun Lu
  *
- * Created on October 25 , 2022
+ * Created on November 16 , 2022
  */
 //******** Pre-processor directives from D2L ******************************
 #include "xc.h"
@@ -61,8 +61,9 @@
 #define Idle() {__asm__ volatile ("pwrsav #1");}
 #define dsen() {__asm__ volatile ("BSET DSCON, #15");}
 //******************************************************************************
-
-#include "xc.h"
+#include "IOs.h"
+#include "ChangeClock.h"
+#include "UART2.h"
 
 int main(void){
     AD1PCFG = 0xFFFF; // Turn all analog pins to digital

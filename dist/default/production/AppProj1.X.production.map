@@ -93,13 +93,13 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200               0x186           0x249  (585)
-.const                       0x386                0x10            0x18  (24)
-.text                        0x396               0x34e           0x4f5  (1269)
-.dinit                       0x6e4                0x16            0x21  (33)
-.text                        0x6fa                0x12            0x1b  (27)
+.text                        0x200               0x196           0x261  (609)
+.const                       0x396                0x16            0x21  (33)
+.text                        0x3ac               0x374           0x52e  (1326)
+.dinit                       0x720                0x16            0x21  (33)
+.text                        0x736                0x12            0x1b  (27)
 
-                 Total "program" memory used (bytes):          0x792  (1938) 12%
+                 Total "program" memory used (bytes):          0x7ec  (2028) 12%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x600]
@@ -150,59 +150,61 @@ External Symbols in Program Memory (by address):
                   0x00023c                  __psv_init
                   0x000252                  __data_init_standard
                   0x000252                  __data_init
-                  0x0002c8                  __T2Interrupt
-                  0x0002d2                  __CNInterrupt
-                  0x000346                  __U2TXInterrupt
-                  0x000350                  __DefaultInterrupt
-                  0x000356                  _strlen
-                  0x000396                  _InitUART2
-                  0x0003f0                  _XmitUART2
-                  0x000430                  _Disp2String
-                  0x000458                  _Disp2Dec
-                  0x0004d4                  _decrement_mins
-                  0x0004e8                  _decrement_secs
-                  0x000500                  _increment_mins
-                  0x000516                  _increment_secs
-                  0x00052c                  _disp_time
-                  0x000542                  _ss_timer
-                  0x000572                  _reset_timer
-                  0x00057e                  _IOinit
-                  0x0005a6                  _IOcheck
-                  0x000620                  _NewClk
-                  0x00069c                  _delay_ms
-                  0x0006fa                  _main
+                  0x0002cc                  __T2Interrupt
+                  0x0002d6                  __CNInterrupt
+                  0x000356                  __U2TXInterrupt
+                  0x000360                  __DefaultInterrupt
+                  0x000366                  _strlen
+                  0x0003ac                  _InitUART2
+                  0x000406                  _XmitUART2
+                  0x000446                  _Disp2String
+                  0x00046e                  _Disp2Dec
+                  0x0004ea                  _decrement_mins
+                  0x0004fe                  _decrement_secs
+                  0x00051a                  _increment_mins
+                  0x000530                  _increment_secs
+                  0x000546                  _disp_time
+                  0x000560                  _ss_timer
+                  0x00059c                  _alarm
+                  0x0005ac                  _reset_timer
+                  0x0005b8                  _IOinit
+                  0x0005e4                  _IOcheck
+                  0x000660                  _NewClk
+                  0x0006dc                  _delay_ms
+                  0x000736                  _main
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000458                  _Disp2Dec
-                  0x000430                  _Disp2String
-                  0x0005a6                  _IOcheck
-                  0x00057e                  _IOinit
-                  0x000396                  _InitUART2
-                  0x000620                  _NewClk
-                  0x0003f0                  _XmitUART2
-                  0x0002d2                  __CNInterrupt
-                  0x000350                  __DefaultInterrupt
+                  0x00046e                  _Disp2Dec
+                  0x000446                  _Disp2String
+                  0x0005e4                  _IOcheck
+                  0x0005b8                  _IOinit
+                  0x0003ac                  _InitUART2
+                  0x000660                  _NewClk
+                  0x000406                  _XmitUART2
+                  0x0002d6                  __CNInterrupt
+                  0x000360                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
-                  0x0002c8                  __T2Interrupt
-                  0x000346                  __U2TXInterrupt
+                  0x0002cc                  __T2Interrupt
+                  0x000356                  __U2TXInterrupt
                   0x000252                  __data_init
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x0004d4                  _decrement_mins
-                  0x0004e8                  _decrement_secs
-                  0x00069c                  _delay_ms
-                  0x00052c                  _disp_time
-                  0x000500                  _increment_mins
-                  0x000516                  _increment_secs
-                  0x0006fa                  _main
-                  0x000572                  _reset_timer
-                  0x000542                  _ss_timer
-                  0x000356                  _strlen
+                  0x00059c                  _alarm
+                  0x0004ea                  _decrement_mins
+                  0x0004fe                  _decrement_secs
+                  0x0006dc                  _delay_ms
+                  0x000546                  _disp_time
+                  0x00051a                  _increment_mins
+                  0x000530                  _increment_secs
+                  0x000736                  _main
+                  0x0005ac                  _reset_timer
+                  0x000560                  _ss_timer
+                  0x000366                  _strlen
 
 Memory Configuration
 
@@ -257,7 +259,7 @@ LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200        0x186
+.text             0x000200        0x196
  *(.init)
  .init            0x000200         0x4c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
                   0x000200                  __resetPRI
@@ -269,36 +271,36 @@ LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x0002c8          0xa build/default/production/TimeDelay.o
-                  0x0002c8                  __T2Interrupt
- .isr.text        0x0002d2         0x74 build/default/production/IOs.o
-                  0x0002d2                  __CNInterrupt
- .isr.text        0x000346          0xa build/default/production/UART2.o
-                  0x000346                  __U2TXInterrupt
- .isr             0x000350          0x4 default_isr
-                  0x000350                  __DefaultInterrupt
+ .isr.text        0x0002cc          0xa build/default/production/TimeDelay.o
+                  0x0002cc                  __T2Interrupt
+ .isr.text        0x0002d6         0x80 build/default/production/IOs.o
+                  0x0002d6                  __CNInterrupt
+ .isr.text        0x000356          0xa build/default/production/UART2.o
+                  0x000356                  __U2TXInterrupt
+ .isr             0x000360          0x4 default_isr
+                  0x000360                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x000354          0x2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
-                  0x000354                  __crt_start_mode
-                  0x000354                  __crt_start_mode_normal
- .libc.strlen     0x000356         0x30 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-elf.a(strlen.XX_o)
-                  0x000356                  _strlen
+                  0x000364          0x2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
+                  0x000364                  __crt_start_mode
+                  0x000364                  __crt_start_mode_normal
+ .libc.strlen     0x000366         0x30 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-elf.a(strlen.XX_o)
+                  0x000366                  _strlen
 
 usercode
  *(usercode)
 
 __FBS             0xf80000          0x2
  *(__FBS.sec*)
- __FBS.sec        0xf80000          0x2 /CW/_FBS@ÿ
+ __FBS.sec        0xf80000          0x2 /CW/_FBS@aÌ
                   0xf80000                  __FBS.sec
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGS
+ __FGS.sec        0xf80004          0x2 /CW/_FGS`ÅÌ
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -322,42 +324,42 @@ __FDS
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x2dd9
+.debug_info       0x000000       0x2d8d
  *(.debug_info)
- .debug_info      0x000000        0x1d9 build/default/production/main.o
- .debug_info      0x0001d9        0x619 build/default/production/TimeDelay.o
- .debug_info      0x0007f2        0xf81 build/default/production/IOs.o
- .debug_info      0x001773        0x53c build/default/production/ChangeClock.o
- .debug_info      0x001caf        0xd8d build/default/production/UART2.o
- .debug_info      0x002a3c        0x39d build/default/production/Timer.o
+ .debug_info      0x000000        0x172 build/default/production/main.o
+ .debug_info      0x000172        0x619 build/default/production/TimeDelay.o
+ .debug_info      0x00078b        0xf68 build/default/production/IOs.o
+ .debug_info      0x0016f3        0x53c build/default/production/ChangeClock.o
+ .debug_info      0x001c2f        0xd8d build/default/production/UART2.o
+ .debug_info      0x0029bc        0x3d1 build/default/production/Timer.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x625
+.debug_abbrev     0x000000        0x5e0
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0x8f build/default/production/main.o
- .debug_abbrev    0x00008f         0xfa build/default/production/TimeDelay.o
- .debug_abbrev    0x000189        0x15a build/default/production/IOs.o
- .debug_abbrev    0x0002e3        0x123 build/default/production/ChangeClock.o
- .debug_abbrev    0x000406        0x115 build/default/production/UART2.o
- .debug_abbrev    0x00051b        0x10a build/default/production/Timer.o
+ .debug_abbrev    0x000000         0x5b build/default/production/main.o
+ .debug_abbrev    0x00005b         0xfa build/default/production/TimeDelay.o
+ .debug_abbrev    0x000155        0x12f build/default/production/IOs.o
+ .debug_abbrev    0x000284        0x123 build/default/production/ChangeClock.o
+ .debug_abbrev    0x0003a7        0x115 build/default/production/UART2.o
+ .debug_abbrev    0x0004bc        0x124 build/default/production/Timer.o
 
-.debug_line       0x000000        0x736
+.debug_line       0x000000        0x74c
  *(.debug_line)
  .debug_line      0x000000        0x109 build/default/production/main.o
  .debug_line      0x000109        0x129 build/default/production/TimeDelay.o
- .debug_line      0x000232        0x15f build/default/production/IOs.o
- .debug_line      0x000391        0x119 build/default/production/ChangeClock.o
- .debug_line      0x0004aa        0x14f build/default/production/UART2.o
- .debug_line      0x0005f9        0x13d build/default/production/Timer.o
+ .debug_line      0x000232        0x16c build/default/production/IOs.o
+ .debug_line      0x00039e        0x119 build/default/production/ChangeClock.o
+ .debug_line      0x0004b7        0x14f build/default/production/UART2.o
+ .debug_line      0x000606        0x146 build/default/production/Timer.o
 
-.debug_frame      0x000000        0x270
+.debug_frame      0x000000        0x28a
  *(.debug_frame)
  .debug_frame     0x000000         0x2e build/default/production/main.o
  .debug_frame     0x00002e         0x48 build/default/production/TimeDelay.o
  .debug_frame     0x000076         0x6c build/default/production/IOs.o
  .debug_frame     0x0000e2         0x2e build/default/production/ChangeClock.o
  .debug_frame     0x000110         0x96 build/default/production/UART2.o
- .debug_frame     0x0001a6         0xca build/default/production/Timer.o
+ .debug_frame     0x0001a6         0xe4 build/default/production/Timer.o
 
 .debug_str        0x000000        0x13b
  *(.debug_str)
@@ -374,7 +376,7 @@ __FDS
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x1e1
+                  0x000000        0x1eb
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x1b build/default/production/main.o
@@ -387,7 +389,7 @@ __FDS
  .debug_pubnames
                   0x0000d5         0x5e build/default/production/UART2.o
  .debug_pubnames
-                  0x000133         0xae build/default/production/Timer.o
+                  0x000133         0xb8 build/default/production/Timer.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -812,8 +814,9 @@ LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-elf.a
 END GROUP
 OUTPUT(dist/default/production/AppProj1.X.production.elf elf32-pic30)
-LOAD /CW/_FGS
-LOAD /CW/_FBS@ÿ
+LOAD /CW/_FGS`ÅÌ
+LOAD /CW/_FBS@aÌ
+LOAD jump_table
 LOAD default_isr
 LOAD data_init
 
@@ -903,34 +906,35 @@ __c30_signature
  .ivt._U2TXInterrupt
                   0x000052          0x2 build/default/production/UART2.o
 
-.const              0x8386         0x10 load address 0x000386  
- .const             0x8386         0x10 build/default/production/Timer.o
+.const              0x8396         0x16 load address 0x000396  
+ .const             0x8396         0x16 build/default/production/Timer.o
 
-.text             0x000396        0x34e
- .text            0x000396        0x13e build/default/production/UART2.o
-                  0x000396                  _InitUART2
-                  0x0003f0                  _XmitUART2
-                  0x000430                  _Disp2String
-                  0x000458                  _Disp2Dec
- .text            0x0004d4         0xaa build/default/production/Timer.o
-                  0x0004d4                  _decrement_mins
-                  0x0004e8                  _decrement_secs
-                  0x000500                  _increment_mins
-                  0x000516                  _increment_secs
-                  0x00052c                  _disp_time
-                  0x000542                  _ss_timer
-                  0x000572                  _reset_timer
- .text            0x00057e         0xa2 build/default/production/IOs.o
-                  0x00057e                  _IOinit
-                  0x0005a6                  _IOcheck
- .text            0x000620         0x7c build/default/production/ChangeClock.o
-                  0x000620                  _NewClk
- .text            0x00069c         0x48 build/default/production/TimeDelay.o
-                  0x00069c                  _delay_ms
+.text             0x0003ac        0x374
+ .text            0x0003ac        0x13e build/default/production/UART2.o
+                  0x0003ac                  _InitUART2
+                  0x000406                  _XmitUART2
+                  0x000446                  _Disp2String
+                  0x00046e                  _Disp2Dec
+ .text            0x0004ea         0xce build/default/production/Timer.o
+                  0x0004ea                  _decrement_mins
+                  0x0004fe                  _decrement_secs
+                  0x00051a                  _increment_mins
+                  0x000530                  _increment_secs
+                  0x000546                  _disp_time
+                  0x000560                  _ss_timer
+                  0x00059c                  _alarm
+                  0x0005ac                  _reset_timer
+ .text            0x0005b8         0xa8 build/default/production/IOs.o
+                  0x0005b8                  _IOinit
+                  0x0005e4                  _IOcheck
+ .text            0x000660         0x7c build/default/production/ChangeClock.o
+                  0x000660                  _NewClk
+ .text            0x0006dc         0x44 build/default/production/TimeDelay.o
+                  0x0006dc                  _delay_ms
 
-.dinit            0x0006e4         0x16
- .dinit           0x0006e4         0x16 data_init
+.dinit            0x000720         0x16
+ .dinit           0x000720         0x16 data_init
 
-.text             0x0006fa         0x12
- .text            0x0006fa         0x12 build/default/production/main.o
-                  0x0006fa                  _main
+.text             0x000736         0x12
+ .text            0x000736         0x12 build/default/production/main.o
+                  0x000736                  _main

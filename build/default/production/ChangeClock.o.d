@@ -1,1 +1,3 @@
-build/default/production/ChangeClock.o: ChangeClock.c
+build/default/production/ChangeClock.o: ChangeClock.c ChangeClock.h
+
+ChangeClock.h:

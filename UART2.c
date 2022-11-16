@@ -6,6 +6,7 @@
  */ 
 #include <xc.h>
 #include <string.h>
+#include "UART2.h"
 /*
  * -InitUART2, XmitUART2, Disp2String are all functions taken from : https://github.com/rfsense/PIC_MCU_UART/blob/main/UART2.c
  * - Disp2String is called in IOs.c to display text on the terminal
@@ -148,7 +149,6 @@ void Disp2Dec(unsigned int DispNum)
     
     return;
 }
-
 
 
 void __attribute__ ((interrupt, no_auto_psv)) _U2TXInterrupt(void) {

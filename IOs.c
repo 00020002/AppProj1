@@ -55,14 +55,14 @@ void IOinit() {
  */
 void IOcheck() {
 
-    
+
     IEC1bits.CNIE = 0; //disable CN interrupts to avoid debounces
     delay_ms(400); // 400 msec delay to filter out debounces 
     IEC1bits.CNIE = 1; //Enable CN interrupts to detect pb release
-    
+
     LATBbits.LATB8 = 0; //Turns LED off
-    
-    
+
+
 
     if (b1_flag == 1) {
         ///While button 1 pressed:
@@ -71,7 +71,7 @@ void IOcheck() {
         while (PORTAbits.RA2 == 0) {
             increment_mins();
             disp_time();
-            delay_ms(500);
+            delay_ms(600);
         }
         b1_flag = 0;
     }
@@ -94,21 +94,21 @@ void IOcheck() {
     if (b3_flag == 1) { ///While button 3 pressed
         // Light on/off with 3 sec delay
         // "PB3 Pressed" sent to terminal
-
+        
         b3_pressed = 0;
-        while (PORTAbits.RA4 == 0) {
-            delay_ms(1000);
-            b3_pressed++;
-        }
-
-
-
-
-        if (b3_pressed >= 3) {
+        while(PORTAbits.RA4 == 0)
+        {
+            if (b3_pressed >= 3) {
             t_running_flag = 0;
             reset_timer();
             disp_time();
-        } else if (t_running_flag == 0) {
+            break;
+            }
+            delay_ms(1000);
+            b3_pressed++;
+        }
+        
+        if (t_running_flag == 0 && b3_pressed < 3) {
             t_running_flag = 1;
             ss_timer();
         }
@@ -130,7 +130,7 @@ void IOcheck() {
 
 void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {
     IFS1bits.CNIF = 0; // clear IF flag
-    
+
     if ((PORTAbits.RA2 == 0) && (PORTAbits.RA4 == 1) && (PORTBbits.RB4 == 1)) {
         b1_flag = 1;
         b2_flag = 0;
@@ -139,20 +139,19 @@ void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {
         b1_flag = 0;
         b2_flag = 1;
         b3_flag = 0;
-    }
-    else if ((PORTAbits.RA2 == 1) && (PORTAbits.RA4 == 0) && (PORTBbits.RB4 == 1)) {
+    } else if ((PORTAbits.RA2 == 1) && (PORTAbits.RA4 == 0) && (PORTBbits.RB4 == 1)) {
 
         b1_flag = 0;
         b2_flag = 0;
         b3_flag = 1;
-        if(t_running_flag == 1) t_running_flag = 0;
-    
-    
-        
-    } else {
-        b1_flag = 0;
-        b2_flag = 0;
-        b3_flag = 0;
+        if (t_running_flag == 1) {
+            t_running_flag = 0;
+        }
     }
-    return;
+ else {
+    b1_flag = 0;
+    b2_flag = 0;
+    b3_flag = 0;
+}
+return;
 }

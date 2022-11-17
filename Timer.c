@@ -8,7 +8,6 @@
 #include "xc.h"
 #include "Timer.h"
 #include "TimeDelay.h"
-#include "IOs.h"
 int mins = 0;
 int secs = 0;
 int t_running_flag = 0;
@@ -50,28 +49,45 @@ void disp_time() {
     Disp2Dec(mins);
     Disp2String("m : ");
     Disp2Dec(secs);
+    Disp2String("s");
 }
 
+int b3 = 0;
 void ss_timer() {
+    b3 = 0 ;
     while (t_running_flag == 1) {
+        LATBbits.LATB8 = 1;
+        delay_ms(1000);
         decrement_secs();
         if(secs == 0 && mins == 0) break;
-        LATBbits.LATB8 = 1;
         disp_time();
-        delay_ms(1000);
+        
         LATBbits.LATB8 = 0;
+        delay_ms(1000);
+        decrement_secs();
+        if(secs == 0 && mins == 0) break;
+        disp_time();
+        
+        
     }
     t_running_flag = 0;
-    if(b3_pressed >= 3){
-        reset_timer();
-        disp_time();
-    }
-    
     if (mins == 0 && secs == 0)
     {
         alarm();
     }
-        
+    else{
+    while((PORTAbits.RA4 == 0)){
+        if(b3 >= 3){
+            reset_timer();
+            disp_time();
+            break;
+        }
+        b3++;
+        delay_ms(1000);
+    }
+    }
+
+       
 }
 
 void alarm() {
